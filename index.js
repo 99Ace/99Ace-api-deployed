@@ -16,9 +16,10 @@ app.use(cors());
 // ROUTES
 app.post('/sendEmail', async (req, res) => {
     let parentName = req.body.parentName
-    let contact = req.body.contact
+    let mobile = req.body.mobile
     let email = req.body.email
     let message = req.body.message
+    let visit = req.body.visit
 
     try {
         res.status(200);      
@@ -41,8 +42,9 @@ app.post('/sendEmail', async (req, res) => {
             That was easy!
             Name : ${parentName}
             Email : ${email}
-            Contact : ${contact}
+            Contact : ${mobile}
             Message : ${message}
+            Remarks : ${visit}
             `
         };
         // Send it
