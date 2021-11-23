@@ -24,32 +24,35 @@ app.post('/sendEmail', async (req, res) => {
         res.status(200);      
         res.send(parentName);
         console.log(parentName)
-        // // Set up email
-    //     var transporter = nodemailer.createTransport({
-    //         service: 'gmail',
-    //         auth: {
-    //             user: process.env.USER_EMAIL,
-    //             pass: process.env.USER_PASSWORD,
-    //         }
-    //     });
-    //     // // Create email body
-    //     var mailOptions = {
-    //         from: process.env.USER_EMAIL,
-    //         to: process.env.KNK_EMAIL,
-    //         subject: 'TESTING EMAIL KNK 123',
-    //         text: `
-    //         That was easy!
-    //         Name : ${name}
-    //         `
-    //     };
-    //     // // Send it
-    //     transporter.sendMail(mailOptions, function (error, info) {
-    //         if (error) {
-    //             console.log(error);
-    //         } else {
-    //             console.log('Email sent: ' + info.response);
-    //         }
-    //     });
+        // Set up email
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.USER_EMAIL,
+                pass: process.env.USER_PASSWORD,
+            }
+        });
+        // Create email body
+        var mailOptions = {
+            from: process.env.USER_EMAIL,
+            to: process.env.KNK_EMAIL,
+            subject: 'TESTING EMAIL KNK 123',
+            text: `
+            That was easy!
+            Name : ${parentName}
+            Email : ${email}
+            Contact : ${contact}
+            Message : ${message}
+            `
+        };
+        // Send it
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     } 
     catch(e) {
         res.status(500);
