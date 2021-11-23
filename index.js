@@ -62,7 +62,7 @@ app.post('/sendEmail', async (req, res) => {
 
 // START SERVER
 app.listen(
-    3000 , () => { 
+    process.env.PORT , () => { 
         console.log("Server has started"); 
     }
 );
